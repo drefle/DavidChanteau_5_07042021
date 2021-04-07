@@ -1,0 +1,23 @@
+@mixin alignement($justify,$align) {
+    align-items: $align;
+    display: flex;
+    justify-content: $justify;
+
+}
+
+@mixin marg-pad($margin-value, $padding-value){
+    margin:$margin-value;
+    padding: $padding-value;
+}
+
+@mixin font-details($family,$size,$weight){
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+@mixin tablet-only{
+    @media(min-width:#{$tablet-width}) {
+        @content;
+    }
+}
