@@ -1,3 +1,56 @@
+main article div img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+header {
+  background-color: #f3e9f1;
+  height: 6rem;
+  position: relative;
+  padding: 0 2rem;
+}
+header nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+header nav img {
+  height: 100%;
+}
+header nav a {
+  font-size: 1.5rem;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5rem 0;
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: center;
+}
+main article {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  text-align: center;
+  width: clamp(250px,40%,350px);
+  margin: 2rem;
+}
+main article div {
+  height: clamp(180px,235px,235px);
+}
+main article h2 {
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+main article p {
+  font-size: 1.5rem;
+}
+
 * {
   margin: 0;
   padding: 0;
