@@ -6,7 +6,7 @@ main{
     width: 100%;
     justify-content: center;
 
-    article{
+    a{
         display: flex;
         flex-direction: column;
         height: auto;
@@ -14,19 +14,22 @@ main{
         width: clamp(250px,40%,350px);
         margin: 2rem;
 
-        div{
-            height: clamp(180px,235px,235px);
-            img{
-                @extend %img-cover;
-            
+        article{
+
+            div{
+                height: 235px;
+                img{
+                    @extend %img-cover;
+                
+                }
             }
-        }
-        h2{
-            font-size: 2rem;
-            padding: 1rem 0;
-        }
-        p{
-            font-size: 1.5rem;
+            h2{
+                font-size: 2rem;
+                padding: 1rem 0;
+            }
+            p{
+                font-size: 1.5rem;
+            }
         }
     }
 }

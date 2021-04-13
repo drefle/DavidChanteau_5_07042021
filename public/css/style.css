@@ -1,4 +1,4 @@
-main article div img {
+main a article div img {
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -21,7 +21,10 @@ header nav img {
   height: 100%;
 }
 header nav a {
+  height: 100%;
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
 }
 
 main {
@@ -32,7 +35,7 @@ main {
   width: 100%;
   justify-content: center;
 }
-main article {
+main a {
   display: flex;
   flex-direction: column;
   height: auto;
@@ -40,14 +43,14 @@ main article {
   width: clamp(250px,40%,350px);
   margin: 2rem;
 }
-main article div {
-  height: clamp(180px,235px,235px);
+main a article div {
+  height: 235px;
 }
-main article h2 {
+main a article h2 {
   font-size: 2rem;
   padding: 1rem 0;
 }
-main article p {
+main a article p {
   font-size: 1.5rem;
 }
 
