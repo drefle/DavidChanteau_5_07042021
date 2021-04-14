@@ -21,16 +21,20 @@
 
     </header>
 
-    <main id="main">
+    <main id="main" class="mainArticle">
         
         <template id="templateArticle">
-            <a id="article" href="article.html">
-                <article>
-                    <div><img id="article__img" src="images/vcam_1.jpg" alt="appareil photo"></div>
+            <article>
+                <div><img id="article__img" src="images/vcam_1.jpg" alt="appareil photo"></div>
+                <div>
                     <h2 id="article__name">Nom de l'appareil</h2>
+                    <p id="article__description">la description</p>
+                    <select name="lenses" id="article__lenses">
+                    </select>
                     <p id="article__price">le prix</p>
-                </article>
-            </a>
+                    <button id="btn__store">Ajouter au Panier</button>
+                </div>
+            </article>
         </template>
         
     </main>

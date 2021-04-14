@@ -1,4 +1,4 @@
-main{
+.mainIndex{
     display: flex;
     flex-wrap: wrap;
     padding: 5rem 0;
@@ -7,17 +7,17 @@ main{
     justify-content: center;
 
     a{
-        display: flex;
-        flex-direction: column;
-        height: auto;
-        text-align: center;
-        width: clamp(250px,40%,350px);
         margin: 2rem;
 
         article{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
 
             div{
-                height: 235px;
+                height: 275px;
+                width: 275px;
                 img{
                     @extend %img-cover;
                 
@@ -32,4 +32,8 @@ main{
             }
         }
     }
+}
+
+.mainArticle{
+
 }

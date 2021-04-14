@@ -1,4 +1,4 @@
-main a article div img {
+.mainIndex a article div img {
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -27,7 +27,7 @@ header nav a {
   align-items: center;
 }
 
-main {
+.mainIndex {
   display: flex;
   flex-wrap: wrap;
   padding: 5rem 0;
@@ -35,22 +35,24 @@ main {
   width: 100%;
   justify-content: center;
 }
-main a {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  text-align: center;
-  width: clamp(250px,40%,350px);
+.mainIndex a {
   margin: 2rem;
 }
-main a article div {
-  height: 235px;
+.mainIndex a article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-main a article h2 {
+.mainIndex a article div {
+  height: 275px;
+  width: 275px;
+}
+.mainIndex a article h2 {
   font-size: 2rem;
   padding: 1rem 0;
 }
-main a article p {
+.mainIndex a article p {
   font-size: 1.5rem;
 }
 

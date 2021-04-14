@@ -23,7 +23,6 @@ export function getOneCamera(liste_cameras,id){
     try{
         for(let camera of liste_cameras){
             if(camera._id === id){
-                console.log(camera);
                 return camera;
             }
         }
@@ -35,3 +34,5 @@ export function getOneCamera(liste_cameras,id){
 
 }
 
+
+ 

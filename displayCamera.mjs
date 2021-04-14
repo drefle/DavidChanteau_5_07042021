@@ -11,12 +11,13 @@ async function main(){
 }
 
 export function displayAllCamera(camera){
-    const templateElt = document.getElementById("templateArticle");
+    const templateElt = document.getElementById("templateCamera");
     const cloneElt = document.importNode(templateElt.content,true);
-    cloneElt.getElementById("article").setAttribute("href","article.html?id="+camera._id);
-    cloneElt.getElementById("article__img").src = camera.imageUrl;
-    cloneElt.getElementById("article__name").textContent = camera.name;
-    cloneElt.getElementById("article__price").textContent = camera.price / 1000 + " €";
+    cloneElt.getElementById("camera").setAttribute("href","article.html?id="+camera._id);
+    cloneElt.getElementById("camera__img").src = camera.imageUrl;
+    cloneElt.getElementById("camera__name").textContent = camera.name;
+    cloneElt.getElementById("camera__price").textContent = camera.price / 100 + " €";
 
     document.getElementById("main").appendChild(cloneElt);
 }
+
