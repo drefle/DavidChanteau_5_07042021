@@ -1,4 +1,4 @@
-.mainIndex a article div img {
+.mainArticle article .image img, .mainIndex a article div img {
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -48,12 +48,54 @@ header nav a {
   height: 275px;
   width: 275px;
 }
-.mainIndex a article h2 {
+.mainIndex a article #article__name {
   font-size: 2rem;
   padding: 1rem 0;
 }
 .mainIndex a article p {
   font-size: 1.5rem;
+}
+
+.mainArticle {
+  display: flex;
+  padding: 5rem 0;
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.mainArticle article {
+  display: flex;
+  column-gap: 2rem;
+}
+.mainArticle article .image {
+  height: 275px;
+  width: 275px;
+}
+.mainArticle article .description {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 300px;
+}
+.mainArticle article .description #article__lenses {
+  width: fit-content;
+}
+.mainArticle article .description #article__price {
+  border-top: solid #6b6b6b 1px;
+  font-size: 2rem;
+}
+.mainArticle article .description #btn__store {
+  width: fit-content;
+  padding: 1rem 0.5rem;
+  background-color: #f3e9f1;
+  border-radius: 2rem;
+  border: 2px solid #6b6b6b;
+  box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.75);
+  outline: none;
+}
+.mainArticle article .description #btn__store:active {
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 * {

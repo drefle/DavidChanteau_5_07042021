@@ -3,6 +3,7 @@ import {getCameras, getOneCamera} from './getCamera.mjs';
 main()
 
 async function main(){
+    localStorage.clear()
     const url =new URL(window.location.href);
     const id = url.searchParams.get("id");
     

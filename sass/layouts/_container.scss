@@ -23,7 +23,7 @@
                 
                 }
             }
-            h2{
+            #article__name{
                 font-size: 2rem;
                 padding: 1rem 0;
             }
@@ -35,5 +35,51 @@
 }
 
 .mainArticle{
+    display: flex;
+    padding: 5rem 0;
+    box-sizing: border-box;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    article{
+        display: flex;
+        column-gap: 2rem;
+        .image{
+            height: 275px;
+            width: 275px;
+            img{
+                @extend %img-cover;
+            
+            }
+        }
+        .description{
+            display: flex;
+            flex-direction: column;
+            row-gap: 1rem;
+            width:300px;
+            #article__name{
 
+            }
+            #article__lenses{
+                width:fit-content;
+            }
+
+            #article__price{
+                border-top: solid #6b6b6b 1px;
+                font-size: 2rem;
+            }
+            #btn__store{
+                width: fit-content;
+                padding: 1rem 0.5rem;
+                background-color: #f3e9f1;
+                border-radius: 2rem;
+                border: 2px solid #6b6b6b;
+                box-shadow: 0px 5px 5px -2px rgb(0 0 0 / 75%);
+                outline: none;
+            }
+            #btn__store:active{
+                box-shadow:inset 0px 0px 5px 0px rgb(0 0 0 / 75%);
+            }
+        }
+    }
 }
