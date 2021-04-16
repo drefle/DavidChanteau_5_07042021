@@ -31,7 +31,6 @@ header nav a {
   display: flex;
   flex-wrap: wrap;
   padding: 5rem 0;
-  box-sizing: border-box;
   width: 100%;
   justify-content: center;
 }
@@ -59,14 +58,21 @@ header nav a {
 .mainArticle {
   display: flex;
   padding: 5rem 0;
-  box-sizing: border-box;
   width: 100%;
   justify-content: center;
   align-items: center;
 }
 .mainArticle article {
   display: flex;
-  column-gap: 2rem;
+  justify-content: center;
+  column-gap: 2.5rem;
+  row-gap: 2.5rem;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .mainArticle article {
+    flex-direction: column;
+  }
 }
 .mainArticle article .image {
   height: 275px;
@@ -77,6 +83,15 @@ header nav a {
   flex-direction: column;
   row-gap: 1rem;
   width: 300px;
+  border-left: 1px solid #6b6b6b;
+  padding: 0 2.5rem;
+}
+@media (max-width: 768px) {
+  .mainArticle article .description {
+    border-top: 1px solid #6b6b6b;
+    border-left: none;
+    padding: 2.5rem 0;
+  }
 }
 .mainArticle article .description #article__lenses {
   width: fit-content;

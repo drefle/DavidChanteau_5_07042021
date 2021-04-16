@@ -17,7 +17,7 @@
 }
 
 @mixin tablet-only{
-    @media(min-width:#{$tablet-width}) {
+    @media(max-width:#{$tablet-width}) {
         @content;
     }
 }

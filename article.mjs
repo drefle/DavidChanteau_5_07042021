@@ -3,12 +3,15 @@ import {getCameras, getOneCamera} from './getCamera.mjs';
 main()
 
 async function main(){
-    localStorage.clear()
     const url =new URL(window.location.href);
     const id = url.searchParams.get("id");
     
 
     const cameras = await getCameras();
+
+    initCart();
+    
+
 
     const objet = getOneCamera(cameras,id);
 
@@ -47,8 +50,26 @@ function displayArticle(camera){
 
 function store(objet){
 
-    objet.lenses= document.getElementById('article__lenses').value;
-    localStorage.setItem(localStorage.length,JSON.stringify(objet));
-    console.log(localStorage);
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    cart.push(objet)
 
+    objet.lenses= document.getElementById('article__lenses').value;
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    console.log(localStorage);
+    console.log(cart);
+
+}
+
+function initCart(){
+
+    if(localStorage.getItem("cart")){
+        console.log(localStorage);
+    }
+    else{
+        let cart = [];
+        localStorage.setItem("cart",JSON.stringify(cart));
+    }
+    
 }
