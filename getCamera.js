@@ -19,15 +19,15 @@ export async function getCameras(){
 }
 
 export function getOneCamera(liste_cameras,id){
-
+    let indice = 0;
     try{
-        for(let camera of liste_cameras){
-            if(camera._id === id){
-                return camera;
-            }
+        while(liste_cameras[indice]._id != id && indice < liste_cameras.length - 1){
+            indice ++;
         }
-    
-        console.log('La camera recherché n\'existe pas .');
+        if(liste_cameras[indice]._id != id){
+            return null;
+        }
+        return liste_cameras[indice];
     }catch(e){
         console.log(e);
     }

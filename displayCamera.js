@@ -1,4 +1,4 @@
-import {getCameras} from './getCamera.mjs';
+import {getCameras} from './getCamera.js';
 
 main()
 async function main(){
@@ -10,7 +10,7 @@ async function main(){
     }
 }
 
-export function displayAllCamera(camera){
+function displayAllCamera(camera){
     const templateElt = document.getElementById("templateCamera");
     const cloneElt = document.importNode(templateElt.content,true);
     cloneElt.getElementById("camera").setAttribute("href","article.html?id="+camera._id);

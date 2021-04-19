@@ -1,4 +1,4 @@
-import {getCameras, getOneCamera} from './getCamera.mjs';
+import {getCameras, getOneCamera} from './getCamera.js';
 
 main()
 
@@ -14,15 +14,20 @@ async function main(){
 
 
     const objet = getOneCamera(cameras,id);
+    if(objet==null){
+        console.log('Erreur lors de la récupération des données')
+    }
 
-    displayArticle(objet);
+    else{
+        displayArticle(objet);
 
 
 
-    const btn__store = document.getElementById("btn__store");
-    btn__store.addEventListener('click',() => {
-        store(objet);
-    });
+        const btn__store = document.getElementById("btn__store");
+        btn__store.addEventListener('click',() => {
+            store(objet);
+        });
+    }
 
 
 
