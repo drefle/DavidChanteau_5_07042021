@@ -1,0 +1,245 @@
+.mainArticle article .image img, .mainIndex a article div img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+header {
+  background-color: #f3e9f1;
+  height: 6rem;
+  position: relative;
+  padding: 0 2rem;
+}
+header nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+header nav img {
+  height: 100%;
+}
+header nav a {
+  height: 100%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.mainIndex {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5rem 0;
+  width: 100%;
+  justify-content: center;
+}
+.mainIndex a {
+  margin: 2rem;
+}
+.mainIndex a article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mainIndex a article div {
+  height: 275px;
+  width: 275px;
+}
+.mainIndex a article #article__name {
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+.mainIndex a article p {
+  font-size: 1.5rem;
+}
+
+.mainArticle {
+  display: flex;
+  padding: 5rem 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.mainArticle article {
+  display: flex;
+  justify-content: center;
+  column-gap: 2.5rem;
+  row-gap: 2.5rem;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .mainArticle article {
+    flex-direction: column;
+  }
+}
+.mainArticle article .image {
+  height: 275px;
+  width: 275px;
+}
+.mainArticle article .description {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 300px;
+  border-left: 1px solid #6b6b6b;
+  padding: 0 2.5rem;
+}
+@media (max-width: 768px) {
+  .mainArticle article .description {
+    border-top: 1px solid #6b6b6b;
+    border-left: none;
+    padding: 2.5rem 0;
+  }
+}
+.mainArticle article .description #article__lenses {
+  width: fit-content;
+}
+.mainArticle article .description #article__price {
+  border-top: solid #6b6b6b 1px;
+  font-size: 2rem;
+}
+.mainArticle article .description #btn__store {
+  width: fit-content;
+  padding: 1rem 0.5rem;
+  background-color: #f3e9f1;
+  border-radius: 2rem;
+  border: 2px solid #6b6b6b;
+  box-shadow: 0px 5px 0px 0px #6b6b6b;
+  outline: none;
+  position: relative;
+}
+.mainArticle article .description #btn__store:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+}
+
+.mainPanier {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: auto;
+}
+@media (max-width: 768px) {
+  .mainPanier {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+.mainPanier table {
+  width: 500px;
+  border: 1px solid;
+  border-collapse: collapse;
+}
+@media (max-width: 768px) {
+  .mainPanier table {
+    width: 100%;
+  }
+  .mainPanier table thead {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .mainPanier table .panier tr {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.mainPanier table .panier tr td {
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border: 1px solid black;
+  vertical-align: middle;
+}
+@media (max-width: 768px) {
+  .mainPanier table .panier tr td {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 1rem;
+    width: 100%;
+  }
+  .mainPanier table .panier tr td::before {
+    content: attr(data-title);
+    display: block;
+    text-align: left;
+    width: 150px;
+  }
+}
+.mainPanier table .panier tr .image {
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .mainPanier table .panier tr .image {
+    justify-content: start;
+  }
+}
+.mainPanier table .panier tr .image img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+.mainPanier table .panier tr .price {
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .mainPanier table .panier tr .price {
+    text-align: left;
+  }
+}
+.mainPanier table .panier tr .description #article__lense {
+  grid-column-start: 2;
+}
+.mainPanier table .panier tr .description #article__lense::before {
+  content: "Lentille: ";
+}
+.mainPanier .container__total {
+  display: block;
+  width: 100%;
+}
+.mainPanier .container__total .article__total {
+  margin-top: 2rem;
+  width: fit-content;
+  float: right;
+}
+.mainPanier .container__total .article__total td {
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border: 1px solid black;
+  vertical-align: middle;
+}
+.mainPanier .container__form .form__contact {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+.mainPanier .container__form .form__contact label {
+  font-size: 1.2rem;
+  font-weight: 900;
+  width: 150px;
+  margin-bottom: 0.5rem;
+}
+.mainPanier .container__form .form__contact input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+a {
+  color: inherit;
+}
+
+/*# sourceMappingURL=style.css.map */

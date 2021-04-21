@@ -4,7 +4,6 @@ main()
 async function main(){
 
     const cameras = await getCameras();
-
     for(let camera of cameras){
         displayAllCamera(camera);
     }

@@ -1,5 +1,8 @@
 
-
+/**
+ * Retourne la liste de caméras récupérée via une api en utilisant des promesses
+ * @return {Array}
+ */
 export async function getCameras(){
 
     try{
@@ -17,6 +20,15 @@ export async function getCameras(){
     }
 
 }
+
+/**
+ * Renvoie la caméra de la liste fournie en paramètre en fonction de l'id fournie également en paramètre
+ * 
+ * @param {Array} liste_cameras 
+ * @param {String} id 
+ * 
+ * @return {Object} 
+ */
 
 export function getOneCamera(liste_cameras,id){
     let indice = 0;

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Orinoco</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='public/css/style.css'>
+    <script type='module' src="./displayCart.js"></script>
+    <script type='module' src="./form.js"></script>
+    <script src="https://kit.fontawesome.com/1021098a8f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+
+        <nav>
+            <a href="index.html"><img src="logo.png" alt="logo de la société Orinoco"></a>
+            <a href="panier.html"><i class="fas fa-shopping-cart"></i></a>
+        </nav>
+
+    </header>
+
+    <main id="main" class="mainPanier">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Description</th>
+                    <th>Prix</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbody" class="panier">
+
+                <template id="templatePanier">
+                        <tr>
+                            <td class="image" data-title="Produit"><img id="article__img" src="images/vcam_1.jpg" alt="appareil photo"></td>
+                            <td class="description" data-title="Description">
+                                <h2 id="article__name">Nom de l'appareil</h2>
+                                <p id="article__lense">l'objectif</p>
+                            </td>
+                            <td class="price" data-title="Prix">
+                                <p id="article__price"></p>
+                            </td>
+                        </tr>
+                </template>
+
+            </tbody>
+        </table>
+
+        <section class="container__total">
+            <table class="article__total">
+                <tbody>
+                    <tr>
+                        <td>TOTAL</td>
+                        <td id="total__price">Le prix total</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="container__form">
+            <form id="my__form" action="confirmation.html" method="POST">
+                <article class="form__contact">
+                    <label for="firstName">Prénom</label>
+                    <input type="text" name="firstName" id="firstName" required placeholder="John">
+                </article>
+                <article class="form__contact">
+                    <label for="lastName">Nom</label>
+                    <input type="text" name="lastName" id="lastName" required placeholder="Doe">
+                </article>
+                <article class="form__contact">
+                    <label for="address">Adresse</label>
+                    <input type="text" name="address" id="address" required placeholder="2 rue des étoiles">
+                </article>
+                <article class="form__contact">
+                    <label for="city">Ville</label>
+                    <input type="text" name="city" id="city" required placeholder="Paris">
+                </article>
+                <article class="form__contact">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required placeholder="john.doe@example.com">
+                </article>
+                <article class="form__contact">
+                    <input type="submit" value="Envoyer">
+                </article>
+            </form>
+
+        </section>
+
+        
+    </main>
+
+    <!-- <footer>
+
+        <div>
+            <ul>
+                <li>
+                    <a class="social " href="index.html" aria-label="twitter link"><i class="fa fa-twitter"></i></a>                
+                </li>
+                <li>
+                    <a class="social" href="index.html" aria-label="facebook link"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a class="social" href="index.html" aria-label="dribbble link"><i class="fa fa-dribbble "></i></a>
+                </li>
+                <li>
+                    <a class="social" href="index.html" aria-label="instagram link"><i class="fa fa-instagram"></i></a>
+                </li>
+            </ul>
+            
+            
+            
+        </div>
+
+    </footer> -->
+    
+
+
+</body>
+</html>
