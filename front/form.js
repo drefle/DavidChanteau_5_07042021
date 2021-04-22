@@ -15,11 +15,8 @@ function sendForm(){
             email: formData.get("email")
         };
         let products = getCartId();
-        console.log(products)
-        console.log(contact)
 
         let data = {contact, products};
-        console.log(data)
 
         postRequest(data);
 
