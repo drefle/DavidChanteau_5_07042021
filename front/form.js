@@ -1,4 +1,4 @@
-import {getCart} from './cart.js';
+import {getCartId} from './cart.js';
 
 sendForm()
 
@@ -14,16 +14,40 @@ function sendForm(){
             city: formData.get("city"),
             email: formData.get("email")
         };
-        let products = getCart();
-
-        let data = {contact, products};
-
+        let products = getCartId();
         console.log(products)
         console.log(contact)
-        var request = new XMLHttpRequest();
-        request.open("POST", "http://localhost:3000/api/cameras/order");
-        request.setRequestHeader("Content-Type", "application/json");
-        request.send(JSON.stringify(data));
+
+        let data = {contact, products};
+        console.log(data)
+
+        postRequest(data);
+
+
     })
 }
 
+
+async function postRequest(data){
+    try{
+        let response = await fetch('http://localhost:3000/api/cameras/order',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        console.log(response)
+
+        if(response.ok){
+            let responseData = await response.json();
+            console.log(responseData)
+            return responseData;
+        }
+        else{
+            console.error('Erreur lors de la récupération des données : erreur '+ response.status);
+        }
+    }catch(e){
+        console.log(e);
+    }
+}

@@ -34,8 +34,14 @@ export function initCart(){
     
 }
 
-export function getCart(){
-    return JSON.parse(localStorage.getItem("cart"));
+export function getCartId(){
+    let cartId = [];
+    let cart = JSON.parse(localStorage.getItem("cart"));
+
+    for(let item of cart){
+        cartId.push(item._id);
+    }
+    return cartId;
 }
 
 
