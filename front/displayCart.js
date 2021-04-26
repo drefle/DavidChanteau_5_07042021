@@ -1,18 +1,23 @@
-
+import {isLocalStorageCart,isLocalStorageCartEmpty} from './cart.js';
 
 main()
 
 async function main(){
 
-    let cart = JSON.parse(localStorage.getItem("cart"));
-    let totalPrice = 0;
+    if(isLocalStorageCart() && !isLocalStorageCartEmpty()){
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        let totalPrice = 0;
 
-    for(let camera of cart){
-        totalPrice += parseInt(camera.price / 100,10);
-        displayCart(camera);
+        for(let teddy of cart){
+            totalPrice += (teddy.item.price * parseInt(teddy.quantity,10) )/ 100;
+            displayCart(teddy);
+        }
+
+        document.getElementById("total__price").textContent = totalPrice + " €";
     }
-
-    document.getElementById("total__price").textContent = totalPrice + " €";
+    else{
+        window.alert('Le panier est vide')
+    }
 }
 
 
@@ -23,14 +28,15 @@ async function main(){
 
 
 
-function displayCart(camera){
+function displayCart(teddy){
     
     const templateElt = document.getElementById("templatePanier");
     const cloneElt = document.importNode(templateElt.content,true);
-    cloneElt.getElementById("article__img").src = camera.imageUrl;
-    cloneElt.getElementById("article__name").textContent = camera.name;
-    cloneElt.getElementById("article__price").textContent = camera.price / 100 + " €";
-    cloneElt.getElementById("article__lense").textContent = camera.lenses;
+    cloneElt.getElementById("article__img").src = teddy.item.imageUrl;
+    cloneElt.getElementById("article__name").textContent = teddy.item.name;
+    cloneElt.getElementById("article__price").textContent = (teddy.item.price * parseInt(teddy.quantity,10) )/ 100 + " €";
+    cloneElt.getElementById("article__colors").textContent = teddy.item.colors;
+    cloneElt.getElementById("article__quantity").textContent = 'Quantité : ' +teddy.quantity; 
 
     document.getElementById("tbody").appendChild(cloneElt);
 }

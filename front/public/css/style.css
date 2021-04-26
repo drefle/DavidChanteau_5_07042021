@@ -93,7 +93,7 @@ header nav a {
     padding: 2.5rem 0;
   }
 }
-.mainArticle article .description #article__lenses {
+.mainArticle article .description #article__colors, .mainArticle article .description #article__quantity {
   width: fit-content;
 }
 .mainArticle article .description #article__price {
@@ -193,11 +193,11 @@ header nav a {
     text-align: left;
   }
 }
-.mainPanier table .panier tr .description #article__lense {
+.mainPanier table .panier tr .description #article__colors {
   grid-column-start: 2;
 }
-.mainPanier table .panier tr .description #article__lense::before {
-  content: "Lentille: ";
+.mainPanier table .panier tr .description #article__colors::before {
+  content: "Couleur: ";
 }
 .mainPanier .container__total {
   display: block;
@@ -226,7 +226,7 @@ header nav a {
   width: 150px;
   margin-bottom: 0.5rem;
 }
-.mainPanier .container__form .form__contact input {
+.mainPanier .container__form .form__contact input, .mainPanier .container__form .form__contact button {
   padding: 0.5rem;
   font-size: 1rem;
 }

@@ -70,7 +70,7 @@
                 padding:2.5rem 0;
             }
             
-            #article__lenses{
+            #article__colors,#article__quantity{
                 width:fit-content;
             }
 
@@ -167,11 +167,11 @@
                 }
                 .description{
                     
-                    #article__lense{
+                    #article__colors{
                         grid-column-start: 2;
                     }
-                    #article__lense::before{
-                        content:"Lentille: ";
+                    #article__colors::before{
+                        content:"Couleur: ";
                     }
                 }
             }
@@ -208,10 +208,11 @@
                 margin-bottom: 0.5rem;
             }
 
-            input{
+            input, button{
                 padding: 0.5rem;
                 font-size: 1rem;
             }
+            
         }
     }
 }

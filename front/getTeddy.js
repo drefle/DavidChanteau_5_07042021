@@ -3,10 +3,10 @@
  * Retourne la liste de caméras récupérée via une api en utilisant des promesses
  * @return {Array}
  */
-export async function getCameras(){
+export async function getTeddies(){
 
     try{
-        let response = await fetch('http://localhost:3000/api/cameras');
+        let response = await fetch('http://localhost:3000/api/teddies');
 
         if(response.ok){
             let data = await response.json();
@@ -24,22 +24,22 @@ export async function getCameras(){
 /**
  * Renvoie la caméra de la liste fournie en paramètre en fonction de l'id fournie également en paramètre
  * 
- * @param {Array} liste_cameras 
+ * @param {Array} liste_teddies 
  * @param {String} id 
  * 
  * @return {Object} 
  */
 
-export function getOneCamera(liste_cameras,id){
+export function getOneTeddy(liste_teddies,id){
     let indice = 0;
     try{
-        while(liste_cameras[indice]._id != id && indice < liste_cameras.length - 1){
+        while(liste_teddies[indice]._id != id && indice < liste_teddies.length - 1){
             indice ++;
         }
-        if(liste_cameras[indice]._id != id){
+        if(liste_teddies[indice]._id != id){
             return null;
         }
-        return liste_cameras[indice];
+        return liste_teddies[indice];
     }catch(e){
         console.log(e);
     }
