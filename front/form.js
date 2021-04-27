@@ -41,23 +41,18 @@ function sendForm(){
 
 async function postRequest(data){
     try{
-        let response = await fetch('http://localhost:3000/api/teddies/order',{
+        await fetch('http://localhost:3000/api/teddies/order',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(data),
-        })
-        console.log(response);
-
-        if(response.ok){
-            let responseData = await response.json();
+        }).then(response => response.json())
+        .then(responseData => {
             localStorage.setItem("order",responseData.orderId);
             window.location.href= 'confirmation.html';
-        }
-        else{
-            console.error('Erreur lors de la récupération des données : erreur '+ response.status);
-        }
+        });
+
     }catch(e){
         console.log(e);
     }
