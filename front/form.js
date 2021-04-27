@@ -3,6 +3,7 @@ import {getCartId, isLocalStorageCartEmpty} from './cart.js';
 sendForm()
 
 function sendForm(){
+    console.log(localStorage);
     let myform = document.getElementById("my__form");
     let btn__form = document.getElementById("btn__form")
 
@@ -18,11 +19,16 @@ function sendForm(){
                 email: formData.get("email")
             };
             let products = getCartId(); //products: (2) ["5be9c8541c9d440000665243", "5beaaa8f1c9d440000a57d95"]
-
+            console.log(products);
+            console.log(contact.lastName)
             let data = {contact, products};
-            console.log(data)
+            console.log(JSON.stringify(data))
 
-            console.log(postRequest(data));
+            postRequest(data);
+
+
+
+
         }
         else{
             window.alert('Vous n\'avez aucun nounours à commander !')
@@ -46,8 +52,8 @@ async function postRequest(data){
 
         if(response.ok){
             let responseData = await response.json();
-            
-            return responseData.orderId;
+            localStorage.setItem("order",responseData.orderId);
+            window.location.href= 'confirmation.html';
         }
         else{
             console.error('Erreur lors de la récupération des données : erreur '+ response.status);
