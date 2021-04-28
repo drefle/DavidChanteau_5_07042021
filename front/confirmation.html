@@ -6,9 +6,9 @@
     <title>Orinoco</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='public/css/style.css'>
-    <script type='module' src="./displayCart.js"></script>
-    <script type='module' src="./form.js"></script>
     <script src="https://kit.fontawesome.com/1021098a8f.js" crossorigin="anonymous"></script>
+    <script src="./displayConfirmation.js" defer></script>
+
 </head>
 <body>
 
@@ -21,9 +21,18 @@
 
     </header>
 
-    <main id="main" class="mainPanier">
+    <main id="main" class="mainConfirmation">
 
-
+        <template id="templateConfirmation">
+            <article>
+                <p id="confirmation__orderid">N° de commande : </p>
+                <div class="confirmation__message">
+                    <p id="confirmation__prénom"> machin,</p>
+                    <p>Votre commande a été validée.</p>
+                    <p id="confirmation__price">Paiement attendu: 1 milliard d'euros</p>
+                </div>
+            </article>
+        </template>
         
     </main>
 

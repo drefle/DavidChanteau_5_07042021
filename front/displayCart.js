@@ -12,21 +12,13 @@ async function main(){
             totalPrice += (teddy.item.price * parseInt(teddy.quantity,10) )/ 100;
             displayCart(teddy);
         }
-
+        localStorage.setItem('price', totalPrice);
         document.getElementById("total__price").textContent = totalPrice + " €";
     }
     else{
         window.alert('Le panier est vide')
     }
 }
-
-
-
-
-
-
-
-
 
 function displayCart(teddy){
     

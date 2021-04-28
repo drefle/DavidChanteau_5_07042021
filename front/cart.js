@@ -16,9 +16,7 @@ export function store(objet){
     let index = indexItemInCart(objet);
 
     if(index != null){
-        console.log(parseInt(cart[index].quantity,10))
         quantity = parseInt(quantity,10) + parseInt(cart[index].quantity,10);
-        console.log(quantity)
         cart[index].quantity = quantity.toString();
     }
     else{

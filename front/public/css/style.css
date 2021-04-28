@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .mainArticle article .image img, .mainIndex a article div img {
   height: 100%;
   object-fit: cover;
@@ -231,11 +232,58 @@ header nav a {
   font-size: 1rem;
 }
 
+.mainConfirmation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+}
+.mainConfirmation article {
+  position: relative;
+  width: clamp(250px,100%,850px);
+  height: 100%;
+  padding: 3rem 0;
+  text-align: center;
+}
+.mainConfirmation article #confirmation__orderid {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-weight: 700;
+}
+.mainConfirmation article #confirmation__orderid::before {
+  content: "N° de commande : ";
+  font-weight: 300;
+}
+.mainConfirmation article .confirmation__message {
+  position: relative;
+  padding: 3rem;
+  font-size: 2rem;
+  background-color: #b9b9b9;
+}
+.mainConfirmation article .confirmation__message #confirmation__prénom {
+  font-weight: 700;
+  color: #f3e9f1;
+}
+.mainConfirmation article .confirmation__message #confirmation__prénom::before {
+  content: "Merci ";
+  font-weight: 300;
+  color: black;
+}
+.mainConfirmation article .confirmation__message #confirmation__price {
+  font-weight: 700;
+}
+.mainConfirmation article .confirmation__message #confirmation__price::before {
+  content: "Pour un montant de :  ";
+  font-weight: 300;
+}
+
 * {
   margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
+  font-family: sans-serif;
 }
 
 a {

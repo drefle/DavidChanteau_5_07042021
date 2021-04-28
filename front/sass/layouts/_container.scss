@@ -216,3 +216,54 @@
         }
     }
 }
+
+.mainConfirmation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+
+    article{
+        position: relative;
+        width: clamp(250px,100%,850px);
+        height: 100%;
+        padding: 3rem 0;
+        text-align: center;
+        #confirmation__orderid{
+            position: absolute;
+            right: 0;
+            top:0;
+            font-weight: 700;
+        }
+
+        #confirmation__orderid::before{
+            content: "N° de commande : ";
+            font-weight: 300;
+        }
+        .confirmation__message{
+            position: relative;
+            padding: 3rem;
+            font-size: 2rem;
+            background-color: #b9b9b9;
+
+            #confirmation__prénom{
+                font-weight: 700;
+                color: #f3e9f1;
+            }
+            #confirmation__prénom::before{
+                content:'Merci ';
+                font-weight: 300;
+                color: black;
+            }
+            #confirmation__price{
+                font-weight: 700;
+            }
+            #confirmation__price::before{
+                content:'Pour un montant de :  ';
+                font-weight: 300;
+            }
+            
+        }
+
+    }
+}
