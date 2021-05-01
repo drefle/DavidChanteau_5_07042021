@@ -1,5 +1,4 @@
-
-
+import { displayNbProduct } from "./nbProduct.js";
 
 /**
  * Stocke dans le localStorage le teddy avec la color sélectionnée
@@ -28,7 +27,6 @@ export function store(objet){
 
 
         cart.push(itemList)
-        
 
     }
     localStorage.setItem("cart",JSON.stringify(cart));
@@ -53,8 +51,20 @@ export function isLocalStorageCart(){
  */
 
 export function isLocalStorageCartEmpty(){
-    let cart = JSON.parse(localStorage.getItem("cart"));
-    return cart.length==0?true:false;
+    if(isLocalStorageCart()){
+        return JSON.parse(localStorage.getItem("cart")).length == 0?true:false;
+    }
+    else{
+        return null;
+    }
+}
+
+/**
+ * Détermine le nombre d'éléments dans le panier
+ */
+
+export function lengthLocalStorageCart(){
+    return JSON.parse(localStorage.getItem('cart')).length;
 }
 
 /**

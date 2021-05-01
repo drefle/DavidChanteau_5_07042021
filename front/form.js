@@ -8,8 +8,10 @@ function sendForm(){
     let btn__form = document.getElementById("btn__form")
 
     btn__form.addEventListener("click", function(e){
+        e.preventDefault();
         
         if(!isLocalStorageCartEmpty()){
+            console.log('entrer création objet à envoyer')
             let formData = new FormData(myform);
             let contact = {
                 firstName: formData.get("firstName"),
@@ -19,14 +21,12 @@ function sendForm(){
                 email: formData.get("email")
             };
 
-            console.log(testAddress(contact.address))
 
             if(testName(contact.firstName) && testName(contact.lastName) && testAddress(contact.address) && testCity(contact.city) && testEmail(contact.email)){
                 let products = getCartId(); //products: (2) ["5be9c8541c9d440000665243", "5beaaa8f1c9d440000a57d95"]
-                console.log(products);
-                console.log(contact.lastName)
+
                 let data = {contact, products};
-                console.log(JSON.stringify(data))
+                console.log(data)
     
                 postRequest(data);
             }
@@ -39,6 +39,7 @@ function sendForm(){
         }
         else{
             window.alert('Vous n\'avez aucun nounours à commander !')
+            window.location ='index.html';
         }
 
 
@@ -54,7 +55,8 @@ async function postRequest(data){
                 'content-type': 'application/json'
             },
             body: JSON.stringify(data),
-        }).then(response => response.json())
+        })
+        .then(response => response.json())
         .then(responseData => {
             localStorage.setItem("order",responseData.orderId);
             localStorage.setItem("firstName",responseData.contact.firstName);

@@ -1,5 +1,6 @@
 import {getTeddies, getOneTeddy} from './getTeddy.js';
 import {store, initCart} from './cart.js';
+import {displayNbProduct} from './nbProduct.js'
 
 main()
 
@@ -10,13 +11,8 @@ async function main(){
 
 
         const id = url.searchParams.get("id");// Récupération de l'id compris dans l'url de la page
-    
 
         const teddies = await getTeddies();// Récupération de la liste des caméras
-
-        
-        
-
 
         const objet = getOneTeddy(teddies,id);//Récupère la caméra correspondant à l'id passé dans l'url
 
@@ -32,6 +28,7 @@ async function main(){
             //On ajoute la caméra au panier lors du click sur le bouton Ajouter au Panier
             btn__store.addEventListener('click',() => {
                 store(objet);
+                displayNbProduct();
             });
         }
 
@@ -56,6 +53,7 @@ function displayArticle(teddy){
     const templateElt = document.getElementById("templateArticle");
     const cloneElt = document.importNode(templateElt.content,true);
     cloneElt.getElementById("article__img").src = teddy.imageUrl;
+    cloneElt.getElementById("article__img").alt = "Nounours : " + teddy.name;
     cloneElt.getElementById("article__name").textContent = teddy.name;
     cloneElt.getElementById("article__price").textContent = teddy.price / 100 + " €";
     cloneElt.getElementById("article__description").textContent = teddy.description;

@@ -1,0 +1,26 @@
+.btn{
+    @extend %centrer;
+    background-color: #e27ece;
+    border: none;
+    border-radius: 1.2rem;
+    box-shadow: 0px 3px 3px 0px;
+    height: 30px;
+    outline: none;
+    padding: 1.2rem;
+    position: relative;
+    width: 30px;
+    i{
+        color: #f3e9f1;
+        font-size: 1.2rem;
+    }
+}
+
+.btn:active{
+    background-color: #a22589;
+    box-shadow: none;
+    top: 3px;
+}
+.btn:hover{
+    background-color: #a22589;
+    cursor: pointer;
+}

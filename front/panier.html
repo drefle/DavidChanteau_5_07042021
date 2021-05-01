@@ -1,6 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta name="Content-Type" content="UTF-8">
+	<meta name="Content-Language" content="fr">
+	<meta name="Description" content="Achat de nounours, filiale de l'entreprise Orinoco">
+	<meta name="Author" content="David Chanteau">
+	<meta name="Publisher" content="David Chanteau">
+	<meta name="Identifier-Url" content="https://drefle.github.io/DavidChanteau_5_07042021/">
+	<meta name="Distribution" content="global">
+	<meta name="Category" content="internet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<meta name="theme-color" content="#f3e9f1"/>
+    <meta name=" robots " content="index, follow" />
+    
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Orinoco</title>
@@ -8,6 +20,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='public/css/style.css'>
     <script type='module' src="./displayCart.js"></script>
     <script type='module' src="./form.js"></script>
+    <script type='module' src="./nbProduct.js"></script>
     <script src="https://kit.fontawesome.com/1021098a8f.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -15,43 +28,45 @@
     <header>
 
         <nav>
-            <a href="index.html"><img src="logo.png" alt="logo de la société Orinoco"></a>
-            <a href="panier.html"><i class="fas fa-shopping-cart"></i></a>
+            <a class="header__logo" href="index.html"><img src="logo.png" alt="logo de la société Orinoco"></a>
+            <a class="header__cart" href="panier.html"><i class="fas fa-shopping-cart"></i><div id="nb__product">0</div></a>
         </nav>
 
     </header>
 
     <main id="main" class="mainPanier">
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Produit</th>
-                    <th>Description</th>
-                    <th>Prix</th>
-                </tr>
-            </thead>
-
-            <tbody id="tbody" class="panier">
-
-                <template id="templatePanier">
-                        <tr>
-                            <td class="image" data-title="Produit"><img id="article__img" src="images/vcam_1.jpg" alt="appareil photo"></td>
-                            <td class="description" data-title="Description">
-                                <h2 id="article__name">Nom de l'appareil</h2>
-                                <p id="article__colors">la couleur</p>
-                                <p id="article__quantity">Quantité</p>
-                            </td>
-                            <td class="price" data-title="Prix">
-                                <p id="article__price"></p>
-                            </td>
-                        </tr>
-                </template>
-
-            </tbody>
-        </table>
-
         <section class="container__total">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th></th>
+                    </tr>
+                </thead>
+    
+                <tbody id="tbody" class="panier">
+    
+                    <template id="templatePanier">
+                            <tr class="article">
+                                
+                                <td class="image" data-title="Produit"><img id="article__img" src="images/vcam_1.jpg" alt="appareil photo"></td>
+                                <td class="description" data-title="Description">
+                                    <h2 id="article__name">Nom de l'appareil</h2>
+                                    <p id="article__colors">la couleur</p>
+                                    <p id="article__quantity">Quantité</p>
+                                </td>
+                                <td class="price" data-title="Prix">
+                                    <p id="article__price"></p>
+                                </td>
+                                <td class="delete"><button id="article__delete" class="btn" aria-label="Supprimer un produit"><i class="fas fa-trash"></i></button></td>
+                            </tr>
+                    </template>
+    
+                </tbody>
+            </table>
             <table class="article__total">
                 <tbody>
                     <tr>
@@ -63,7 +78,7 @@
         </section>
 
         <section class="container__form">
-            <form id="my__form"  >
+            <form id="my__form">
                 <article class="form__contact">
                     <label for="firstName">Prénom</label>
                     <input type="text" name="firstName" id="firstName"  required placeholder="John">

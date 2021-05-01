@@ -5,6 +5,12 @@
   width: 100%;
 }
 
+.btn, header nav .header__cart #nb__product {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 header {
   background-color: #f3e9f1;
   height: 6rem;
@@ -21,11 +27,28 @@ header nav {
 header nav img {
   height: 100%;
 }
-header nav a {
-  height: 100%;
+header nav .header__logo, header nav .header__cart {
   font-size: 1.5rem;
   display: flex;
   align-items: center;
+  position: relative;
+}
+header nav .header__logo {
+  height: 100%;
+}
+header nav .header__cart {
+  height: fit-content;
+}
+header nav .header__cart #nb__product {
+  background-color: #e27ece;
+  border-radius: 50%;
+  color: #f3e9f1;
+  font-size: 1.2rem;
+  height: 25px;
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 25px;
 }
 
 .mainIndex {
@@ -101,108 +124,94 @@ header nav a {
   border-top: solid #6b6b6b 1px;
   font-size: 2rem;
 }
-.mainArticle article .description #btn__store {
-  width: fit-content;
-  padding: 1rem 0.5rem;
-  background-color: #f3e9f1;
-  border-radius: 2rem;
-  border: 2px solid #6b6b6b;
-  box-shadow: 0px 5px 0px 0px #6b6b6b;
-  outline: none;
-  position: relative;
-}
-.mainArticle article .description #btn__store:active {
-  box-shadow: 0px 0px 0px 0px;
-  top: 5px;
-}
 
 .mainPanier {
   display: flex;
-  flex-direction: column;
-  padding: 5rem;
-  width: fit-content;
+  padding: 3rem 0;
   justify-content: center;
-  align-items: center;
   box-sizing: border-box;
   margin: auto;
+  grid-column-gap: 3rem;
 }
 @media (max-width: 768px) {
   .mainPanier {
     width: 100%;
     padding: 1rem;
+    flex-direction: column;
+    align-items: center;
   }
 }
-.mainPanier table {
-  width: 500px;
+.mainPanier .container__total {
+  display: block;
+  width: fit-content;
+}
+.mainPanier .container__total table {
+  width: fit-content;
   border: 1px solid;
   border-collapse: collapse;
 }
 @media (max-width: 768px) {
-  .mainPanier table {
+  .mainPanier .container__total table {
     width: 100%;
   }
-  .mainPanier table thead {
+  .mainPanier .container__total table thead {
     display: none;
   }
 }
 @media (max-width: 768px) {
-  .mainPanier table .panier tr {
+  .mainPanier .container__total table .panier .article {
     display: flex;
     flex-direction: column;
   }
 }
-.mainPanier table .panier tr td {
+.mainPanier .container__total table .panier .article td {
   box-sizing: border-box;
   padding: 0.5rem;
   border: 1px solid black;
   vertical-align: middle;
 }
 @media (max-width: 768px) {
-  .mainPanier table .panier tr td {
+  .mainPanier .container__total table .panier .article td {
     display: grid;
     align-items: center;
     grid-template-columns: auto 1fr;
     grid-column-gap: 1rem;
     width: 100%;
   }
-  .mainPanier table .panier tr td::before {
+  .mainPanier .container__total table .panier .article td::before {
     content: attr(data-title);
     display: block;
     text-align: left;
     width: 150px;
   }
 }
-.mainPanier table .panier tr .image {
+.mainPanier .container__total table .panier .article .image {
   display: flex;
   justify-content: center;
 }
 @media (max-width: 768px) {
-  .mainPanier table .panier tr .image {
+  .mainPanier .container__total table .panier .article .image {
     justify-content: start;
   }
 }
-.mainPanier table .panier tr .image img {
+.mainPanier .container__total table .panier .article .image img {
   height: 100px;
   width: 100px;
   object-fit: cover;
 }
-.mainPanier table .panier tr .price {
+.mainPanier .container__total table .panier .article .price {
   text-align: center;
 }
 @media (max-width: 768px) {
-  .mainPanier table .panier tr .price {
+  .mainPanier .container__total table .panier .article .price {
     text-align: left;
   }
 }
-.mainPanier table .panier tr .description #article__colors {
+.mainPanier .container__total table .panier .article .description #article__colors {
   grid-column-start: 2;
 }
-.mainPanier table .panier tr .description #article__colors::before {
+.mainPanier .container__total table .panier .article .description #article__colors::before {
   content: "Couleur: ";
-}
-.mainPanier .container__total {
-  display: block;
-  width: 100%;
 }
 .mainPanier .container__total .article__total {
   margin-top: 2rem;
@@ -215,19 +224,37 @@ header nav a {
   border: 1px solid black;
   vertical-align: middle;
 }
-.mainPanier .container__form .form__contact {
+@media (max-width: 768px) {
+  .mainPanier .container__form {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .mainPanier .container__form #my__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.mainPanier .container__form #my__form .form__contact {
   width: 300px;
   display: flex;
   flex-direction: column;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
-.mainPanier .container__form .form__contact label {
+@media (max-width: 768px) {
+  .mainPanier .container__form #my__form .form__contact {
+    width: clamp(250px,100%,300px);
+  }
+}
+.mainPanier .container__form #my__form .form__contact label {
   font-size: 1.2rem;
   font-weight: 900;
   width: 150px;
   margin-bottom: 0.5rem;
 }
-.mainPanier .container__form .form__contact input, .mainPanier .container__form .form__contact button {
+.mainPanier .container__form #my__form .form__contact input, .mainPanier .container__form #my__form .form__contact button {
   padding: 0.5rem;
   font-size: 1rem;
 }
@@ -276,6 +303,33 @@ header nav a {
 .mainConfirmation article .confirmation__message #confirmation__price::before {
   content: "Pour un montant de :  ";
   font-weight: 300;
+}
+
+.btn {
+  background-color: #e27ece;
+  border: none;
+  border-radius: 1.2rem;
+  box-shadow: 0px 3px 3px 0px;
+  height: 30px;
+  outline: none;
+  padding: 1.2rem;
+  position: relative;
+  width: 30px;
+}
+.btn i {
+  color: #f3e9f1;
+  font-size: 1.2rem;
+}
+
+.btn:active {
+  background-color: #a22589;
+  box-shadow: none;
+  top: 3px;
+}
+
+.btn:hover {
+  background-color: #a22589;
+  cursor: pointer;
 }
 
 * {

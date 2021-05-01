@@ -1,6 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta name="Content-Type" content="UTF-8">
+	<meta name="Content-Language" content="fr">
+	<meta name="Description" content="Achat de nounours, filiale de l'entreprise Orinoco">
+	<meta name="Author" content="David Chanteau">
+	<meta name="Publisher" content="David Chanteau">
+	<meta name="Identifier-Url" content="https://drefle.github.io/DavidChanteau_5_07042021/">
+	<meta name="Distribution" content="global">
+	<meta name="Category" content="internet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<meta name="theme-color" content="#f3e9f1"/>
+    <meta name=" robots " content="index, follow" />
+    
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Orinoco</title>
@@ -8,6 +20,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='public/css/style.css'>
     <script type='module' src="./getTeddy.js"></script>
     <script type='module' src="./article.js"></script>
+    <script type='module' src="./nbProduct.js"></script>
     <script src="https://kit.fontawesome.com/1021098a8f.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -15,8 +28,8 @@
     <header>
 
         <nav>
-            <a href="index.html"><img src="logo.png" alt="logo de la société Orinoco"></a>
-            <a href="panier.html"><i class="fas fa-shopping-cart"></i></a>
+            <a class="header__logo" href="index.html"><img src="logo.png" alt="logo de la société Orinoco"></a>
+            <a class="header__cart" href="panier.html"><i class="fas fa-shopping-cart"></i><div id="nb__product">0</div></a>
         </nav>
 
     </header>
@@ -33,7 +46,7 @@
                     </select>
                     <input type="number" id="article__quantity" name="quantity" min="1" max="5" value="1">
                     <p id="article__price">le prix</p>
-                    <button id="btn__store">Ajouter au Panier</button>
+                    <button id="btn__store" class="btn" aria-label="Ajouter un produit"><i class="fas fa-cart-plus"></i></button>
                 </div>
             </article>
         </template>
