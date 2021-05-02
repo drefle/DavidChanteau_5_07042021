@@ -1,17 +1,15 @@
 import {getCartId, isLocalStorageCartEmpty} from './cart.js';
 
-sendForm()
+main()
 
-function sendForm(){
-    console.log(localStorage);
+function main(){
     let myform = document.getElementById("my__form");
     let btn__form = document.getElementById("btn__form")
 
     btn__form.addEventListener("click", function(e){
-        e.preventDefault();
+        e.preventDefault(); //Empêche le fonctionnement par défaut du formulaire
         
         if(!isLocalStorageCartEmpty()){
-            console.log('entrer création objet à envoyer')
             let formData = new FormData(myform);
             let contact = {
                 firstName: formData.get("firstName"),
@@ -21,34 +19,35 @@ function sendForm(){
                 email: formData.get("email")
             };
 
-
+            //Tests des différents champs du formulaire avec des expressions régulières
             if(testName(contact.firstName) && testName(contact.lastName) && testAddress(contact.address) && testCity(contact.city) && testEmail(contact.email)){
-                let products = getCartId(); //products: (2) ["5be9c8541c9d440000665243", "5beaaa8f1c9d440000a57d95"]
+                let products = getCartId(); //Récupération des id des articles contenu dans le panier
 
-                let data = {contact, products};
-                console.log(data)
+                let data = {contact, products}; //Création de l'objet à envoyer à l'api
     
-                postRequest(data);
+                postRequest(data);  //Envoie de la requête avec les données validées à l'api
             }
 
+            //Affichage d'un message à l'utilisateur en cas formulaire mal remplis
             else{
                 window.alert('Remplissez correctement le formulaire')
             }
-
-
         }
+        //Redirection vers la page d'accueil si le panier est vide
         else{
             window.alert('Vous n\'avez aucun nounours à commander !')
             window.location ='index.html';
         }
-
-
     })
 }
 
-
+/**
+ * Envoie des données à l'api et réception de la réponse qui est stockée dans le localStorage
+ * @param {Object} data Données à envoyer à l'api
+ */
 async function postRequest(data){
     try{
+        //Envoie de la requête à l'api
         await fetch('http://localhost:3000/api/teddies/order',{
             method: 'POST',
             headers: {
@@ -57,6 +56,7 @@ async function postRequest(data){
             body: JSON.stringify(data),
         })
         .then(response => response.json())
+        //Stockage dans le localStorage de l'order et du firstName compris dans l'objet contact reçuent de l'api
         .then(responseData => {
             localStorage.setItem("order",responseData.orderId);
             localStorage.setItem("firstName",responseData.contact.firstName);
@@ -68,21 +68,38 @@ async function postRequest(data){
     }
 }
 
+/**
+ * Expression régulière afin de valider les données du formulaire
+ * @param {String} name 
+ */
 function testName(name){
-    let regex = new RegExp(/[A-Za-zéèêç]{3,}/);
+    let regex = new RegExp(/[A-Za-zéèêç']{3,}/);
     return regex.test(name);
 }
 
+/**
+ * Expression régulière afin de valider les données du formulaire
+ * @param {String} city 
+ */
 function testCity(city){
     let regex = new RegExp(/^([A-Za-zéèêç']* ?)*$/);
     return regex.test(city);
 }
+
+/**
+ * Expression régulière afin de valider les données du formulaire
+ * @param {String} address 
+ */
 function testAddress(address){
     let regex = new RegExp(/^((\d)|[A-Za-zéèêçà']* ?)*$/);
     return regex.test(address);
 }
+
+/**
+ * Expression régulière afin de valider les données du formulaire
+ * @param {String} email 
+ */
 function testEmail(email){
     let regex = new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/);
-    console.log(regex.test(email))
     return regex.test(email);
 }

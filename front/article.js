@@ -1,5 +1,5 @@
-import {getTeddies, getOneTeddy} from './getTeddy.js';
-import {store, initCart} from './cart.js';
+import {getOneTeddy} from './getTeddy.js';
+import {store} from './cart.js';
 import {displayNbProduct} from './nbProduct.js'
 
 main()
@@ -7,17 +7,15 @@ main()
 async function main(){
     const url =new URL(window.location.href);
 
+    //Vérification qu'un item à bien été passé par l'url
     if(url.searchParams.get("id")){
-
 
         const id = url.searchParams.get("id");// Récupération de l'id compris dans l'url de la page
 
-        const teddies = await getTeddies();// Récupération de la liste des caméras
-
-        const objet = getOneTeddy(teddies,id);//Récupère la caméra correspondant à l'id passé dans l'url
+        const objet = await getOneTeddy(id);//Récupère le teddy correspondant à l'id passé dans l'url
 
         if(objet==null){
-            console.log('Erreur lors de la récupération des données')
+            window.alert('Erreur lors de la récupération des données')
         }
 
         else{
@@ -25,22 +23,16 @@ async function main(){
 
             const btn__store = document.getElementById("btn__store");
 
-            //On ajoute la caméra au panier lors du click sur le bouton Ajouter au Panier
+            //On ajoute la caméra au panier lors du click sur le bouton Ajouter au Panier et actualise le compteur d'articles dans le panier
             btn__store.addEventListener('click',() => {
                 store(objet);
                 displayNbProduct();
             });
         }
-
     }
     else{
         window.alert("Aucun nounours n'a été sélectionné!")
     }
-    
-
-
-
-
 }
 
 /**

@@ -1,4 +1,3 @@
-import { displayNbProduct } from "./nbProduct.js";
 
 /**
  * Stocke dans le localStorage le teddy avec la color sélectionnée
@@ -6,18 +5,26 @@ import { displayNbProduct } from "./nbProduct.js";
  */
 
 export function store(objet){
-    initCart();// Initialise le panier si il n'est pas déjà créer
-    let cart = JSON.parse(localStorage.getItem("cart"));
+
+    //Vérification si le panier n'existe pas
+    if(!isLocalStorageCart()){
+        initCart();// Initialise le panier si il n'est pas déjà créer
+    }
+    
+    let cart = JSON.parse(localStorage.getItem("cart"));               
     let quantity = document.getElementById('article__quantity').value;
     
     objet.colors= document.getElementById('article__colors').value;
 
-    let index = indexItemInCart(objet);
+    let index = indexItemInCart(objet);    //Retourne l'index de l'objet dans le panier si il existe déjà, null sinon
 
+    // Si null, alors on ajoute la quantité choisi à la quantité de l'item dans le panier
     if(index != null){
         quantity = parseInt(quantity,10) + parseInt(cart[index].quantity,10);
         cart[index].quantity = quantity.toString();
     }
+
+    //Sinon on crée l'objet dans le panier avec l'item et sa quantité
     else{
     
         let itemList = {
@@ -30,9 +37,6 @@ export function store(objet){
 
     }
     localStorage.setItem("cart",JSON.stringify(cart));
-
-    console.log(localStorage);
-    console.log(cart);
 
 }
 
@@ -79,7 +83,6 @@ function indexItemInCart(item){
 
     if(!isLocalStorageCartEmpty()){
         while((cart[indice].item._id != item._id || cart[indice].item.colors != item.colors)&&(indice != cart.length -1)){
-            console.log('entré dans while indexItemincart')
             indice++;
         }
     
@@ -88,8 +91,6 @@ function indexItemInCart(item){
         }
     }
     return null;
-
-
 }
 
 // initialise le panier dans le localStorage avec un tableau pour stocker les produits

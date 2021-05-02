@@ -3,13 +3,20 @@ import { initCart } from './cart.js';
 
 main()
 async function main(){
-    initCart();
-    const teddies = await getTeddies();
+    initCart(); //Initialisation du panier si il n'existe pas
+    const teddies = await getTeddies(); //Récupération de tous les teddies auprès de l'api
+
+    //Affichage de tous les teddies
     for(let teddy of teddies){
         displayAllTeddy(teddy);
     }
 }
 
+
+/**
+ * Affichage de l'article passé en paramètre
+ * @param {Object} teddy 
+ */
 function displayAllTeddy(teddy){
     const templateElt = document.getElementById("templateTeddy");
     const cloneElt = document.importNode(templateElt.content,true);

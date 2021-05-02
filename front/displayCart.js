@@ -5,19 +5,23 @@ main()
 
 async function main(){
 
+    //Vérification que le panier existe et qu'il n'est pas vide
     if(isLocalStorageCart() && !isLocalStorageCartEmpty()){
         let cart = JSON.parse(localStorage.getItem("cart"));
         let totalPrice = 0;
 
+        //Affichage des éléments du panier et du prix total du panier
         for(let teddy of cart){
             totalPrice += (teddy.item.price * parseInt(teddy.quantity,10) )/ 100;
             displayCart(teddy);
         }
+
         localStorage.setItem('price', totalPrice);
         document.getElementById("total__price").textContent = totalPrice + " €";
 
         let listeBtn = document.getElementsByClassName('btn');
 
+        //Ajout d'une fonction de suppression d'item à chaque item
         for(let btn of listeBtn){
             btn.addEventListener('click',function(e){
                 deleteElement(btn)
@@ -30,6 +34,11 @@ async function main(){
     }
 }
 
+
+/**
+ * Affichage de l'objet passé en paramètre
+ * @param {Object} teddy 
+ */
 function displayCart(teddy){
     
     const templateElt = document.getElementById("templatePanier");
@@ -40,32 +49,33 @@ function displayCart(teddy){
     cloneElt.getElementById("article__colors").textContent = teddy.item.colors;
     cloneElt.getElementById("article__quantity").textContent = 'Quantité : ' +teddy.quantity;
 
-
     document.getElementById("tbody").appendChild(cloneElt);
 }
 
 
-
+/**
+ * Supprime l'article associé au bouton passé en paramètre
+ * @param {HTMLButtonElement} btn 
+ */
 function deleteElement(btn){
-    console.log(btn)
     let listeBtn = document.getElementsByClassName('btn');
-    let index = 0;
-    console.log(index)
+    let indice = 0;
 
-    while(listeBtn[index]!= btn){
-        index++;
+    while(listeBtn[indice]!= btn){
+        indice++;
     }
     let cart = JSON.parse(localStorage.getItem('cart'));
     let listeArticle = document.getElementsByClassName('article');
-    let priceArticle = parseInt(cart[index].item.price,10)/100 * parseInt(cart[index].quantity,10) ;
+    let priceArticle = parseInt(cart[indice].item.price,10)/100 * parseInt(cart[indice].quantity,10) ;
 
-    cart.splice(index,1);
+    cart.splice(indice,1);   //Supprime 1 élément dans le tableau à partir de l'indice fournit en paramètre
     localStorage.setItem('cart',JSON.stringify(cart));
 
     document.getElementById("total__price").textContent = parseInt(document.getElementById("total__price").textContent,10) - priceArticle + " €";
-    listeArticle[index].parentNode.removeChild(listeArticle[index]);
-    displayNbProduct();
+    listeArticle[indice].parentNode.removeChild(listeArticle[indice]); //Supprime l'article du DOM à la position de l'indice dans la liste d'articles
+    displayNbProduct(); //Actualise le nombre d'article au compteur d'articles
     
+    //Affiche un message si le panier est vide
     if(isLocalStorageCartEmpty()){
         window.alert('Le panier est vide')
     }
