@@ -23,6 +23,7 @@ header{
         }
         .header__cart{
             height: fit-content;
+            color: #464646;
             #nb__product{
                 @extend %centrer;
                 background-color: #e27ece;
@@ -34,7 +35,12 @@ header{
                 right: -20px;
                 top: -20px;
                 width: 25px;
+                font-family: Halant-Bold;
             }
+        }
+        .header__cart:hover{
+            transition: all linear .2s;
+            color: darken($color: #464646, $amount: 30);
         }
     }
 }

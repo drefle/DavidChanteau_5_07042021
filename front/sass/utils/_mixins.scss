@@ -10,14 +10,19 @@
     padding: $padding-value;
 }
 
-@mixin font-details($family,$size,$weight){
+@mixin font-details($family,$size,$color){
     font-family: $family;
     font-size: $size;
-    font-weight: $weight;
+    color: $color;
 }
 
 @mixin tablet-only{
     @media(max-width:#{$tablet-width}) {
+        @content;
+    }
+}
+@mixin phone-only{
+    @media(max-width:#{$phone-width}) {
         @content;
     }
 }

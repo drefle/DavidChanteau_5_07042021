@@ -7,7 +7,6 @@
     height: 30px;
     outline: none;
     padding: 1.2rem;
-    position: relative;
     width: 30px;
     i{
         color: #f3e9f1;
@@ -16,11 +15,13 @@
 }
 
 .btn:active{
+    transition: all linear .1s;
     background-color: #a22589;
     box-shadow: none;
-    top: 3px;
+
 }
 .btn:hover{
+    transition: all linear .1s;
     background-color: #a22589;
     cursor: pointer;
 }

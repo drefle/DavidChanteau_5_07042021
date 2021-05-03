@@ -24,6 +24,7 @@ function displayAllTeddy(teddy){
     cloneElt.getElementById("teddy__img").src = teddy.imageUrl;
     cloneElt.getElementById("teddy__img").alt = "Nounours : " + teddy.name;
     cloneElt.getElementById("teddy__name").textContent = teddy.name;
+    cloneElt.getElementById("teddy__description").textContent = teddy.description;
     cloneElt.getElementById("teddy__price").textContent = teddy.price / 100 + " €";
 
     document.getElementById("main").appendChild(cloneElt);

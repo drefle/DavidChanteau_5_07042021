@@ -38,6 +38,7 @@ header nav .header__logo {
 }
 header nav .header__cart {
   height: fit-content;
+  color: #464646;
 }
 header nav .header__cart #nb__product {
   background-color: #e27ece;
@@ -49,34 +50,76 @@ header nav .header__cart #nb__product {
   right: -20px;
   top: -20px;
   width: 25px;
+  font-family: Halant-Bold;
+}
+header nav .header__cart:hover {
+  transition: all linear 0.2s;
+  color: black;
 }
 
 .mainIndex {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 5rem 0;
-  width: 100%;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  padding: 5rem;
+  width: fit-content;
+  margin: auto;
 }
-.mainIndex a {
-  margin: 2rem;
+@media (max-width: 768px) {
+  .mainIndex {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+  }
+}
+@media (max-width: 450px) {
+  .mainIndex {
+    grid-template-columns: 1fr;
+  }
 }
 .mainIndex a article {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: inline-grid;
+  height: 350px;
+  max-width: 300px;
+  border-radius: 2rem;
+  border: 1px solid pink;
+  overflow: hidden;
+  position: relative;
+  grid-template-rows: 200px 1fr 2fr;
 }
 .mainIndex a article div {
-  height: 275px;
-  width: 275px;
+  height: 200px;
+  width: 100%;
 }
-.mainIndex a article #article__name {
-  font-size: 2rem;
-  padding: 1rem 0;
+.mainIndex a article #teddy__name {
+  font-family: Halant-Bold;
+  font-size: 1.4rem;
+  color: #464646;
+  padding: 1rem 0 0 1rem;
 }
-.mainIndex a article p {
-  font-size: 1.5rem;
+.mainIndex a article #teddy__price {
+  font-family: Halant-Bold;
+  font-size: 1.4rem;
+  color: pink;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+.mainIndex a article #teddy__description {
+  font-family: NunitoSans-Regular;
+  font-size: 0.8rem;
+  color: #8a8a8a;
+  padding: 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.mainIndex a article:hover {
+  transition: all linear 0.2s;
+  box-shadow: 0px 0px 0px 1px pink;
+}
+.mainIndex a article:hover #teddy__name {
+  transition: all linear 0.2s;
+  color: pink;
 }
 
 .mainArticle {
@@ -88,9 +131,12 @@ header nav .header__cart #nb__product {
 }
 .mainArticle article {
   display: flex;
-  justify-content: center;
   column-gap: 2.5rem;
   row-gap: 2.5rem;
+  border: 1px solid pink;
+  border-radius: 2rem;
+  overflow: hidden;
+  justify-content: center;
   align-items: center;
 }
 @media (max-width: 768px) {
@@ -99,30 +145,53 @@ header nav .header__cart #nb__product {
   }
 }
 .mainArticle article .image {
-  height: 275px;
-  width: 275px;
+  height: 300px;
+  width: 300px;
+}
+@media (max-width: 768px) {
+  .mainArticle article .image {
+    height: fit-content;
+    width: 300px;
+  }
 }
 .mainArticle article .description {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
   width: 300px;
-  border-left: 1px solid #6b6b6b;
-  padding: 0 2.5rem;
+  position: relative;
 }
 @media (max-width: 768px) {
   .mainArticle article .description {
-    border-top: 1px solid #6b6b6b;
-    border-left: none;
-    padding: 2.5rem 0;
+    padding: 0 1rem;
   }
 }
 .mainArticle article .description #article__colors, .mainArticle article .description #article__quantity {
   width: fit-content;
+  font-family: NunitoSans-Regular;
 }
 .mainArticle article .description #article__price {
-  border-top: solid #6b6b6b 1px;
+  font-family: Halant-Bold;
   font-size: 2rem;
+  color: pink;
+}
+.mainArticle article .description #article__name {
+  font-family: Halant-Bold;
+  font-size: 2rem;
+  color: #464646;
+}
+.mainArticle article .description #article__description {
+  font-family: NunitoSans-Regular;
+  font-size: 1rem;
+  color: #8a8a8a;
+}
+.mainArticle article .description #btn__store {
+  position: absolute;
+  bottom: 10px;
+  right: 1rem;
+}
+.mainArticle article .description #btn__store:active {
+  bottom: 7px;
 }
 
 .mainPanier {
@@ -149,6 +218,10 @@ header nav .header__cart #nb__product {
   width: fit-content;
   border: 1px solid;
   border-collapse: collapse;
+}
+.mainPanier .container__total table th {
+  font-family: NunitoSans-Bold;
+  font-size: 1.2rem;
 }
 @media (max-width: 768px) {
   .mainPanier .container__total table {
@@ -183,6 +256,8 @@ header nav .header__cart #nb__product {
     display: block;
     text-align: left;
     width: 150px;
+    font-family: "NunitoSans-Bold";
+    font-size: 1.2rem;
   }
 }
 .mainPanier .container__total table .panier .article .image {
@@ -207,11 +282,29 @@ header nav .header__cart #nb__product {
     text-align: left;
   }
 }
-.mainPanier .container__total table .panier .article .description #article__colors {
+.mainPanier .container__total table .panier .article .price #article__price {
+  font-family: NunitoSans-Regular;
+  font-size: 1.5rem;
+}
+.mainPanier .container__total table .panier .article .description #article__colors, .mainPanier .container__total table .panier .article .description #article__quantity {
+  font-family: NunitoSans-Regular;
+  font-size: 0.8rem;
+  color: #8a8a8a;
   grid-column-start: 2;
 }
 .mainPanier .container__total table .panier .article .description #article__colors::before {
   content: "Couleur: ";
+}
+.mainPanier .container__total table .panier .article .description #article__name {
+  font-family: Halant-Bold;
+  font-size: 1.5rem;
+  color: #464646;
+}
+.mainPanier .container__total table .panier .article .delete #article__delete {
+  position: relative;
+}
+.mainPanier .container__total table .panier .article .delete #article__delete:active {
+  top: 3px;
 }
 .mainPanier .container__total .article__total {
   margin-top: 2rem;
@@ -223,6 +316,11 @@ header nav .header__cart #nb__product {
   padding: 0.5rem;
   border: 1px solid black;
   vertical-align: middle;
+  font-family: "NunitoSans-Regular";
+  font-size: 1.2rem;
+}
+.mainPanier .container__total .article__total #total__price {
+  font-family: NunitoSans-Bold;
 }
 @media (max-width: 768px) {
   .mainPanier .container__form {
@@ -277,6 +375,7 @@ header nav .header__cart #nb__product {
   right: 0;
   top: 0;
   font-weight: 700;
+  font-family: NunitoSans-Regular;
 }
 .mainConfirmation article #confirmation__orderid::before {
   content: "N° de commande : ";
@@ -304,6 +403,9 @@ header nav .header__cart #nb__product {
   content: "Pour un montant de :  ";
   font-weight: 300;
 }
+.mainConfirmation article .confirmation__message p {
+  font-family: NunitoSans-Regular;
+}
 
 .btn {
   background-color: #e27ece;
@@ -313,7 +415,6 @@ header nav .header__cart #nb__product {
   height: 30px;
   outline: none;
   padding: 1.2rem;
-  position: relative;
   width: 30px;
 }
 .btn i {
@@ -322,22 +423,40 @@ header nav .header__cart #nb__product {
 }
 
 .btn:active {
+  transition: all linear 0.1s;
   background-color: #a22589;
   box-shadow: none;
-  top: 3px;
 }
 
 .btn:hover {
+  transition: all linear 0.1s;
   background-color: #a22589;
   cursor: pointer;
 }
 
+@font-face {
+  font-family: "Halant-Bold";
+  src: url("Halant-Bold.ttf");
+}
+@font-face {
+  font-family: "NunitoSans-Regular";
+  src: url("NunitoSans-Regular.ttf");
+}
+@font-face {
+  font-family: "NunitoSans-Light";
+  src: url("NunitoSans-Light.ttf");
+}
+@font-face {
+  font-family: "NunitoSans-Bold";
+  src: url("NunitoSans-Bold.ttf");
+}
 * {
   margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
   font-family: sans-serif;
+  box-sizing: border-box;
 }
 
 a {
