@@ -1,5 +1,5 @@
 import {isLocalStorageCart,isLocalStorageCartEmpty} from './cart.js';
-import { displayNbProduct } from './display.js';
+import { displayNbProduct } from './nbProduct.js';
 
 main()
 
