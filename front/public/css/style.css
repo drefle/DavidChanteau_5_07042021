@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-.btn, header nav .header__cart #nb__product {
+.btn, footer, header nav .header__cart #nb__product {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -55,6 +55,45 @@ header nav .header__cart #nb__product {
 header nav .header__cart:hover {
   transition: all linear 0.2s;
   color: black;
+}
+
+footer {
+  width: 100%;
+  background-color: #464646;
+  padding: 2rem;
+}
+footer ul {
+  display: flex;
+  grid-column-gap: 4rem;
+}
+@media (max-width: 450px) {
+  footer ul {
+    grid-column-gap: 2.3rem;
+  }
+}
+footer ul li a i {
+  font-size: 2rem;
+  color: #f3e9f1;
+}
+@media (max-width: 450px) {
+  footer ul li a i {
+    font-size: 1.7rem;
+  }
+}
+footer ul li a i:hover {
+  transition: all linear 0.1s;
+  color: #bd86b2;
+}
+
+.footer-bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .footer-relative {
+    position: relative;
+  }
 }
 
 .mainIndex {

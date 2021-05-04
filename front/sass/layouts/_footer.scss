@@ -1,0 +1,41 @@
+footer{
+    @extend %centrer;
+    width: 100%;
+    background-color: #464646;
+    padding:2rem;
+
+    ul{
+        display: flex;
+        grid-column-gap: 4rem;
+        @include phone-only{
+            grid-column-gap: 2.3rem;
+        }
+        li{
+            a{
+                i{
+                    font-size: 2rem;
+                    color: #f3e9f1;
+                    @include phone-only{
+                        font-size: 1.7rem;
+                    }
+                    
+                }
+                i:hover{
+                    transition: all linear .1s;
+                    color: darken($color: #f3e9f1, $amount: 30);
+                }
+            }
+            
+        }
+    }
+}
+
+.footer-bottom{
+    position: absolute;
+    bottom: 0;
+}
+.footer-relative{
+    @include tablet-only{
+        position: relative;
+    }
+}
