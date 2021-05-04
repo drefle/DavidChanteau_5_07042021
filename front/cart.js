@@ -1,10 +1,10 @@
 
 /**
- * Stocke dans le localStorage le teddy avec la color sélectionnée
- * @param {Object} objet teddy
+ * Stocke dans le localStorage le produit avec la color sélectionnée
+ * @param {Object} product
  */
 
-export function store(objet){
+export function store(product){
 
     //Vérification si le panier n'existe pas
     if(!isLocalStorageCart()){
@@ -13,27 +13,30 @@ export function store(objet){
     
     let cart = JSON.parse(localStorage.getItem("cart"));               
     let quantity = document.getElementById('article__quantity').value;
+    let index = null;
     
-    objet.colors= document.getElementById('article__colors').value;
+    product.colors= document.getElementById('article__colors').value;
+    if(!isLocalStorageCartEmpty()){
+        
+        index = indexProductInCart(product);    //Retourne l'index de le produit dans le panier si il existe déjà, null sinon
+    }
 
-    let index = indexItemInCart(objet);    //Retourne l'index de l'objet dans le panier si il existe déjà, null sinon
-
-    // Si null, alors on ajoute la quantité choisi à la quantité de l'item dans le panier
+    // Si null, alors on ajoute la quantité choisi à la quantité du produit dans le panier
     if(index != null){
         quantity = parseInt(quantity,10) + parseInt(cart[index].quantity,10);
         cart[index].quantity = quantity.toString();
     }
 
-    //Sinon on crée l'objet dans le panier avec l'item et sa quantité
+    //Sinon on crée le produit dans le panier avec le produit et sa quantité
     else{
     
-        let itemList = {
-            item : objet,
+        let productList = {
+            product : product,
             quantity : quantity
         };
 
 
-        cart.push(itemList)
+        cart.push(productList)
 
     }
     localStorage.setItem("cart",JSON.stringify(cart));
@@ -67,20 +70,20 @@ export function lengthLocalStorageCart(){
 }
 
 /**
- * Recherche l'item passé en paramètre dans le panier, renvoie son indice si il est trouvé, null sinon
- * @param {Object} item Le nounours ajouté au panier
+ * Recherche le produit passé en paramètre dans le panier, renvoie son indice si il est trouvé, null sinon
+ * @param {Object} product Le nounours ajouté au panier
  * @return {Int}
  */
 
-function indexItemInCart(item){
+function indexProductInCart(product){
     let cart = JSON.parse(localStorage.getItem("cart"));
     let indice = 0;
 
-    while((cart[indice].item._id != item._id || cart[indice].item.colors != item.colors) && (indice != cart.length -1)){
+    while((cart[indice].product._id != product._id || cart[indice].product.colors != product.colors) && (indice != cart.length -1)){
         indice++;
     }
 
-    if(cart[indice].item._id == item._id && cart[indice].item.colors == item.colors){
+    if(cart[indice].product._id == product._id && cart[indice].product.colors == product.colors){
         return indice;
     }
     else{
@@ -97,7 +100,7 @@ export function initCart(){
 }
 
 /**
- * Renvoie une liste des id des objet contenu dans le panier
+ * Renvoie une liste des id des produits contenu dans le panier
  * @return {String[]}
  */
 
@@ -106,7 +109,7 @@ export function getCartId(){
     let cart = JSON.parse(localStorage.getItem("cart"));
 
     for(let element of cart){
-        cartId.push(element.item._id);
+        cartId.push(element.product._id);
     }
     return cartId;
 }

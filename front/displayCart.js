@@ -12,7 +12,7 @@ async function main(){
 
         //Affichage des éléments du panier et du prix total du panier
         for(let teddy of cart){
-            totalPrice += (teddy.item.price * parseInt(teddy.quantity,10) )/ 100;
+            totalPrice += (teddy.product.price * parseInt(teddy.quantity,10) )/ 100;
             displayCart(teddy);
         }
 
@@ -21,7 +21,7 @@ async function main(){
 
         let listeBtn = document.getElementsByClassName('btn');
 
-        //Ajout d'une fonction de suppression d'item à chaque item
+        //Ajout d'une fonction de suppression de produit à chaque bouton associé au produit
         for(let btn of listeBtn){
             btn.addEventListener('click',function(e){
                 deleteElement(btn)
@@ -43,10 +43,10 @@ function displayCart(teddy){
     
     const templateElt = document.getElementById("templatePanier");
     const cloneElt = document.importNode(templateElt.content,true);
-    cloneElt.getElementById("article__img").src = teddy.item.imageUrl;
-    cloneElt.getElementById("article__name").textContent = teddy.item.name;
-    cloneElt.getElementById("article__price").textContent = (teddy.item.price * parseInt(teddy.quantity,10) )/ 100 + " €";
-    cloneElt.getElementById("article__colors").textContent = teddy.item.colors;
+    cloneElt.getElementById("article__img").src = teddy.product.imageUrl;
+    cloneElt.getElementById("article__name").textContent = teddy.product.name;
+    cloneElt.getElementById("article__price").textContent = (teddy.product.price * parseInt(teddy.quantity,10) )/ 100 + " €";
+    cloneElt.getElementById("article__colors").textContent = teddy.product.colors;
     cloneElt.getElementById("article__quantity").textContent = 'Quantité : ' +teddy.quantity;
 
     document.getElementById("tbody").appendChild(cloneElt);
@@ -66,7 +66,7 @@ function deleteElement(btn){
     }
     let cart = JSON.parse(localStorage.getItem('cart'));
     let listeArticle = document.getElementsByClassName('article');
-    let priceArticle = parseInt(cart[indice].item.price,10)/100 * parseInt(cart[indice].quantity,10) ;
+    let priceArticle = parseInt(cart[indice].product.price,10)/100 * parseInt(cart[indice].quantity,10) ;
 
     cart.splice(indice,1);   //Supprime 1 élément dans le tableau à partir de l'indice fournit en paramètre
     localStorage.setItem('cart',JSON.stringify(cart));

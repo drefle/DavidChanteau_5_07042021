@@ -90,13 +90,13 @@ header nav .header__cart:hover {
   height: 200px;
   width: 100%;
 }
-.mainIndex a article #teddy__name {
+.mainIndex a article #product__name {
   font-family: Halant-Bold;
   font-size: 1.4rem;
   color: #464646;
   padding: 1rem 0 0 1rem;
 }
-.mainIndex a article #teddy__price {
+.mainIndex a article #product__price {
   font-family: Halant-Bold;
   font-size: 1.4rem;
   color: pink;
@@ -104,7 +104,7 @@ header nav .header__cart:hover {
   bottom: 1rem;
   right: 1rem;
 }
-.mainIndex a article #teddy__description {
+.mainIndex a article #product__description {
   font-family: NunitoSans-Regular;
   font-size: 0.8rem;
   color: #8a8a8a;
@@ -117,7 +117,7 @@ header nav .header__cart:hover {
   transition: all linear 0.2s;
   box-shadow: 0px 0px 0px 1px pink;
 }
-.mainIndex a article:hover #teddy__name {
+.mainIndex a article:hover #product__name {
   transition: all linear 0.2s;
   color: pink;
 }

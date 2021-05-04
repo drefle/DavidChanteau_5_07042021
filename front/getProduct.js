@@ -3,7 +3,7 @@
  * Retourne la liste de teddies récupérée via une api en utilisant des promesses
  * @return {Array}
  */
-export async function getTeddies(){
+export async function getProducts(){
     try{
         let response = await fetch('http://localhost:3000/api/teddies');
 
@@ -27,7 +27,7 @@ export async function getTeddies(){
  * @return {Object} 
  */
 
-export async function getOneTeddy(id){ 
+export async function getOneProduct(id){ 
     try{
         let response = await fetch('http://localhost:3000/api/teddies/' + id);
 
