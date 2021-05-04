@@ -55,12 +55,7 @@ export function isLocalStorageCart(){
  */
 
 export function isLocalStorageCartEmpty(){
-    if(isLocalStorageCart()){
-        return JSON.parse(localStorage.getItem("cart")).length == 0?true:false;
-    }
-    else{
-        return null;
-    }
+    return JSON.parse(localStorage.getItem("cart")).length == 0?true:false;
 }
 
 /**
@@ -81,30 +76,24 @@ function indexItemInCart(item){
     let cart = JSON.parse(localStorage.getItem("cart"));
     let indice = 0;
 
-    if(!isLocalStorageCartEmpty()){
-        while((cart[indice].item._id != item._id || cart[indice].item.colors != item.colors)&&(indice != cart.length -1)){
-            indice++;
-        }
-    
-        if(cart[indice].item._id == item._id && cart[indice].item.colors == item.colors){
-            return indice;
-        }
+    while((cart[indice].item._id != item._id || cart[indice].item.colors != item.colors) && (indice != cart.length -1)){
+        indice++;
     }
-    return null;
+
+    if(cart[indice].item._id == item._id && cart[indice].item.colors == item.colors){
+        return indice;
+    }
+    else{
+        return null;
+    }
+    
 }
 
 // initialise le panier dans le localStorage avec un tableau pour stocker les produits
 
 export function initCart(){
-
-    if(isLocalStorageCart()){
-        console.log(localStorage);
-    }
-    else{
-        let cart = [];
-        localStorage.setItem("cart",JSON.stringify(cart));
-    }
-    
+    let cart = [];
+    localStorage.setItem("cart",JSON.stringify(cart));
 }
 
 /**
@@ -114,18 +103,12 @@ export function initCart(){
 
 export function getCartId(){
     let cartId = [];
-    
-    if(isLocalStorageCartEmpty()){
-        window.alert("Le panier est vide")
-    }
-    else{
-        let cart = JSON.parse(localStorage.getItem("cart"));
+    let cart = JSON.parse(localStorage.getItem("cart"));
 
-        for(let element of cart){
-            cartId.push(element.item._id);
-        }
-        return cartId;
+    for(let element of cart){
+        cartId.push(element.item._id);
     }
+    return cartId;
 }
 
 

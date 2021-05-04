@@ -1,9 +1,11 @@
 import {getTeddies} from './getTeddy.js';
-import { initCart } from './cart.js';
+import { initCart, isLocalStorageCart } from './cart.js';
 
 main()
 async function main(){
-    initCart(); //Initialisation du panier si il n'existe pas
+    if(!isLocalStorageCart()){
+        initCart(); //Initialisation du panier si il n'existe pas
+    }
     const teddies = await getTeddies(); //Récupération de tous les teddies auprès de l'api
 
     //Affichage de tous les teddies
