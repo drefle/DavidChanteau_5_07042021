@@ -65,20 +65,16 @@
 }
 
 .mainArticle{
-    display: flex;
+    @extend %centrer;
     padding: 5rem 0;
     width: 100%;
-    justify-content: center;
-    align-items: center;
     article{
-        display: flex;
+        @extend %centrer;
         column-gap: 2.5rem;
         row-gap: 2.5rem;
         border: 1px solid pink;
         border-radius: 2rem;
         overflow: hidden;
-        justify-content: center;
-        align-items: center;
         @include tablet-only{
             flex-direction: column;
         }
@@ -300,9 +296,7 @@
 }
 
 .mainConfirmation{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %centrer;
     padding: 5rem;
 
     article{
@@ -352,4 +346,5 @@
         }
 
     }
+
 }
