@@ -72,6 +72,7 @@ function deleteElement(btn){
     localStorage.setItem('cart',JSON.stringify(cart));
 
     document.getElementById("total__price").textContent = parseInt(document.getElementById("total__price").textContent,10) - priceArticle + " €";
+    localStorage.setItem('price',localStorage.getItem('price') - priceArticle);
     listeArticle[indice].parentNode.removeChild(listeArticle[indice]); //Supprime l'article du DOM à la position de l'indice dans la liste d'articles
     displayNbProduct(); //Actualise le nombre d'article au compteur d'articles
     

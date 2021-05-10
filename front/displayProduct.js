@@ -22,7 +22,7 @@ async function main(){
 function displayAllProducts(product){
     const templateElt = document.getElementById("templateProduct");
     const cloneElt = document.importNode(templateElt.content,true);
-    cloneElt.getElementById("product").setAttribute("href","article.html?id="+product._id);
+    cloneElt.getElementById("product").setAttribute("href","article.html?id="+product._id); //Attribution de son id dans l'url du lien
     cloneElt.getElementById("product__img").src = product.imageUrl;
     cloneElt.getElementById("product__img").alt = "Nounours : " + product.name;
     cloneElt.getElementById("product__name").textContent = product.name;
